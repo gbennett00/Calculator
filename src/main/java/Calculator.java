@@ -1,8 +1,6 @@
 
 class Calculator {
 
-    // new comment
-
     Calculator(){
 
     }
