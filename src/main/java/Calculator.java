@@ -1,5 +1,9 @@
+import java.util.HashMap;
+import java.util.UUID;
 
 class Calculator {
+
+    HashMap<Integer, Integer> fibCache = new HashMap<>();
 
     Calculator(){
 
@@ -38,7 +42,15 @@ class Calculator {
     etc
      */
     int fibonacciNumberFinder(int n){
-        return 0;
+        if (fibCache.containsKey(n)) {
+            return fibCache.get(n);
+        }
+        if (n == 1 || n == 2) {
+            return 1;
+        }
+        int num = fibonacciNumberFinder(n-1) + fibonacciNumberFinder(n-2);
+        fibCache.put(n, num);
+        return num;
     }
 
 
@@ -50,7 +62,16 @@ class Calculator {
     if int a = 16 then this method returns: 10000
      */
     String intToBinaryNumber(int number){
-        return null;
+        StringBuilder sb = new StringBuilder();
+        while (number != 0) {
+            if (number % 2 == 0) {
+                sb.append("0");
+            } else {
+                sb.append("1");
+            }
+            number = number / 2;
+        }
+        return (sb.length() == 0) ? "0" : sb.reverse().toString();
     }
 
     /*
@@ -62,7 +83,7 @@ class Calculator {
     if you run this function twice with the same String input, it must return 2 unique String IDs
      */
     String createUniqueID(String n){
-        return null;
+        return n + UUID.randomUUID();
     }
 
 
